@@ -1,19 +1,18 @@
-import 'package:berbera_2/pages/authentication/register.dart';
 import 'package:berbera_2/pages/authentication/login.dart';
+import 'package:berbera_2/pages/authentication/register.dart';
+import 'package:berbera_2/pages/edit_account_page.dart';
 import 'package:berbera_2/pages/new_page.dart';
 import 'package:berbera_2/pages/offer_adding_page.dart';
-import 'package:berbera_2/pages/supplierMain.dart';
-import 'package:berbera_2/pages/term_page.dart';
-import 'package:berbera_2/services/auth.dart';
-import 'package:flutter/material.dart';
+import 'package:berbera_2/pages/offer_page.dart';
+import 'package:berbera_2/pages/order_page.dart';
 import 'package:berbera_2/pages/sign_up_page.dart';
 import 'package:berbera_2/pages/sign_up_page2.dart';
 import 'package:berbera_2/pages/sign_up_page3.dart';
-import 'package:berbera_2/pages/order_page.dart';
-import 'package:berbera_2/pages/edit_account_page.dart';
+import 'package:berbera_2/pages/supplierMain.dart';
+import 'package:berbera_2/pages/term_page.dart';
+import 'package:berbera_2/services/auth.dart';
 import 'package:berbera_2/widget/provider.dart';
-import 'package:berbera_2/pages/offer_page.dart';
-import 'package:berbera_2/pages/validation.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,7 +25,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Berbera',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          appBarTheme:
+              new AppBarTheme(color: Color(0xfff8b250), centerTitle: true),
+          primarySwatch: Colors.deepOrange,
         ),
         home: HomeController(),
         routes: <String, WidgetBuilder>{

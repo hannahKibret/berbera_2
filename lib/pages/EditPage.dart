@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:berbera_2/pages/AddInvo.dart';
 import 'package:berbera_2/pages/EditInvo.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(EditPage());
 
@@ -20,7 +19,6 @@ class _EditPageState extends State<EditPage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         //title: Text(_page[_selectedPage].toString()),
-        backgroundColor: Colors.grey[900],
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
