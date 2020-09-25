@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:berbera_2/pages/supplierMain.dart';
-import 'package:berbera_2/services/auth.dart';
 import 'package:berbera_2/services/offer_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:image_picker/image_picker.dart';

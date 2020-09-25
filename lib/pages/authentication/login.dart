@@ -18,18 +18,20 @@ class _LoginPageState extends State<LoginPage> {
   String _password = '';
   String _error = '';
 
+  void _next_page() {
+    Navigator.of(context).pushReplacementNamed('/register');
+  }
+
   @override
   Widget build(BuildContext context) {
-    AuthService auth = Provider
-        .of(context)
-        .auth;
+    AuthService auth = Provider.of(context).auth;
 
     return MaterialApp(
         theme: ThemeData(
-        primaryColor: Colors.deepOrange,
-    ),
-      home:Scaffold(
-        /*
+          primaryColor: Color(0xffe9902e),
+        ),
+        home: Scaffold(
+          /*
      appBar: AppBar(
      title: Text('Berbera', style: TextStyle(color: Colors.white),), centerTitle: true,
       backgroundColor: Colors.orange,
@@ -171,11 +173,24 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           )
                       ),
-                      SizedBox(height: 12.0),
-                      Text(
-                        _error,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      )
+                        SizedBox(height: 10.0),
+                        Row(
+
+                          children: [Text("Don't have an account?"), FlatButton(
+                            onPressed: () {
+                              _next_page();
+                            },
+                            child: Text('Sign UP', style: TextStyle(
+                              color: Color(0xffe9902e),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),),)
+                          ],),
+
+                        Text(
+                          _error,
+                          style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        )
                       ]
 
 

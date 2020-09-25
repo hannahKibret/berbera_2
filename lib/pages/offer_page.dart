@@ -39,49 +39,54 @@ class _OfferPageState extends State<Offers> {
             }
             return Container(
                 child:Column(
-                  children:<Widget>[
-                    Flexible(
-                      child:ListView.separated(
-                          separatorBuilder:  (context, _) => Container(
+                  children: <Widget>[
+                Flexible(
+                  child: ListView.separated(
+                      separatorBuilder: (context, _) => Container(
                             height: 1,
                             color: Colors.black,
                             padding: EdgeInsetsDirectional.only(start: 72),
-                            child: Container(height: 1, color:Colors.black,width: double.infinity,),
-                          ),
-                          itemCount: snapshot.data.documents.length,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (BuildContext context, int index){
-                            return _offerList.buildOfferList(context, snapshot.data.documents[index]);
-
-                          }
-
-                      ),
-
-                    ),
-                    FlatButton(
-                      child:Text('Add offer',
-                        style:TextStyle(
-                          color:Colors.white,
-                        ),
-                      ),
-                      color: Colors.deepOrange,
-                      onPressed: (){
-//                        Navigator.of(context).pop();
-//                        Navigator.of(context).pushReplacementNamed('/offerAdd');
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context)=> OfferAddingPage(),
-                            settings: RouteSettings(
-                                arguments: ''
+                            child: Container(
+                              height: 1,
+                              color: Colors.black,
+                              width: double.infinity,
                             ),
                           ),
-                        );
-                      },
-                    )
-                    ]
+                      itemCount: snapshot.data.documents.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (BuildContext context, int index) {
+                        return _offerList.buildOfferList(
+                            context, snapshot.data.documents[index]);
+                      }),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Container(
+                      width: MediaQuery.of(context).size.width - 25,
+                      height: 50,
+                      child: RaisedButton(
+                        child: Text(
+                          'Add offer',
+                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(80.0),
+                        ),
+                        color: Color(0xffe9902e),
+                        onPressed: () {
+//                        Navigator.of(context).pop();
+//                        Navigator.of(context).pushReplacementNamed('/offerAdd');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OfferAddingPage(),
+                              settings: RouteSettings(arguments: ''),
+                            ),
+                          );
+                        },
+                      )),
                 )
-            );
+              ]));
 
           }
 

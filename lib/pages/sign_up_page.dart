@@ -4,18 +4,17 @@ import 'package:berbera_2/widget/location_dropdown_field.dart';
 import 'package:berbera_2/widget/category_dropdown_field.dart';
 import 'package:berbera_2/pages/sign_up_page2.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
+
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:berbera_2/services/supplier_service.dart';
-//import 'package:firebase/firebase.dart';
-//import 'package:firebase/src/storage.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 import 'package:flutter/material.dart';
-import 'package:steps/steps.dart';
+
 import 'package:berbera_2/widget/provider.dart';
 import 'package:berbera_2/services/verification_service.dart';
 
@@ -84,30 +83,22 @@ class _SignupPageState extends State<SignupPage>{
     // TODO: implement build
     return MaterialApp(
        theme: ThemeData(
-       primaryColor: Colors.deepOrange,
-   ),
-      home:Scaffold(
-      appBar: AppBar(
-        title: Text('Berbera',style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.deepOrange,
+        primaryColor: Color(0xffe9902e),
       ),
-      body: Builder(
-        builder:(context)=>Container(
-
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-
-
-
-            child: Form(
-              key: _formKey,
-              onChanged: _onFormChange,
-              child: ListView(
+      home: Scaffold(
+        body: Builder(
+          builder: (context) => Container(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Form(
+                key: _formKey,
+                onChanged: _onFormChange,
+                child: ListView(
 
                 shrinkWrap: true,
                scrollDirection:Axis.vertical,
                children: <Widget>[
-
+/*
                   Container(
                     height:60.0,
                     alignment: Alignment.topCenter,
@@ -120,7 +111,7 @@ class _SignupPageState extends State<SignupPage>{
                 steps: [
                   {
                     'color': Colors.white,
-                    'background': Colors.deepOrange,
+                    'background': Color(0xffe9902e),
                     'label': '1',
 
                   },
@@ -141,7 +132,6 @@ class _SignupPageState extends State<SignupPage>{
               ),
                   ),
 
-
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child:Text(
@@ -152,7 +142,7 @@ class _SignupPageState extends State<SignupPage>{
 
                       )
                     )
-                  ),
+                  ),*/
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -198,12 +188,13 @@ class _SignupPageState extends State<SignupPage>{
                       controller: _controller,
                       onSaved: (String val) => this._profile.fullName = _controller.text,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.00),
+                        ),
 
                         // helperText: "Required",
-                        labelText: "Full name",
+                        hintText: "Full name",
                       ),
-                      autofocus: true,
                       //autovalidate: _formChanged,
                       validator: (String val) {
                         if (val.isEmpty) return "Field cannot be left blank";
@@ -219,9 +210,11 @@ class _SignupPageState extends State<SignupPage>{
                       keyboardType: TextInputType.phone,
                       onSaved: (String val) => this._profile.contact = val,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.00),
+                        ),
                         // helperText: "Optional",
-                        labelText: "Contact",
+                        hintText: "Contact",
                       ),
                       validator: (String val) {
                         if (val.isEmpty) {
@@ -238,9 +231,11 @@ class _SignupPageState extends State<SignupPage>{
                       controller: _controller3,
                       onSaved: (String val) => this._store.storeName = val,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.00),
+                        ),
                         // helperText: "Optional",
-                        labelText: "Store Name",
+                        hintText: "Store Name",
                       ),
                       validator: (String val) {
                         if (val.isEmpty) {
@@ -296,9 +291,11 @@ class _SignupPageState extends State<SignupPage>{
                       keyboardType: TextInputType.datetime,
                       onSaved: (String val) => this._store.workingHours = val,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.00),
+                        ),
                         // helperText: "Optional",
-                        labelText: "Working hours",
+                        hintText: "Working hours",
                       ),
                       validator: (String val) {
                         if (val.isEmpty) {
@@ -319,9 +316,11 @@ class _SignupPageState extends State<SignupPage>{
                           keyboardType: TextInputType.number,
                           obscureText: true,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.00),
+                            ),
                             // helperText: "Required",
-                            labelText: "Verification code",
+                            hintText: "Verification code",
                           ),
                           autofocus: true,
                           //autovalidate: _formChanged,
@@ -349,50 +348,62 @@ class _SignupPageState extends State<SignupPage>{
                       child: Align(
                         alignment:Alignment.bottomRight,
                         child:Padding(
-                          padding: const EdgeInsets.only(right:5.0),
-                        child: RaisedButton(
-                          color: Colors.deepOrange,
-                          child: Text("Next",
-                            style:TextStyle(
-                              color:Colors.white,
+                          padding: const EdgeInsets.only(right: 5.0),
+                          child: Container(
+                            height: 50,
+                            child: FlatButton(
+                              color: Color(0xffe9902e),
+                              child: Icon(Icons.navigate_next),
+                              onPressed: _formChanged
+                                  ? () async {
+                                if (_formKey.currentState.validate()) {
+                                  _formKey.currentState.save();
+                                  // final uid = await Provider.of(context).auth
+                                  //_profile.store = _store;
+                                  // navigateToSignupPage2(context);
+                                  //Navigator.of(context).pushReplacementNamed('/signupage2');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SignupPage2(),
+                                      settings: RouteSettings(
+                                          arguments: ''
+                                      ),
+                                    ),
+                                  );
+                                  if (_image != null) {
+                                    uploadPic(context);
+                                    final ref = FirebaseStorage.instance.ref()
+                                        .child(_downloadURL);
+                                    _profile.image = await ref.getDownloadURL();
+                                  } else {
+                                    _profile.image = '';
+                                  }
+                                  final uid = await auth.getCurrentUID();
+                                  print('UIDDDD:${_profile.fullName}');
+                                  Map<String, dynamic> profileDate = {
+                                    'image': this._profile.image,
+                                    'fullname': this._profile.fullName,
+                                    'contact': this._profile.contact,
+                                    'storename': this._store.storeName,
+                                    'storeLocation': this._store.storeLocation,
+                                    'category': this._store.category,
+                                    'workingHours': _store.workingHours
+                                  };
+                                  await _createPro.addData(profileDate, uid)
+                                      .then((result) {})
+                                      .catchError((e) {
+                                    print(e);
+                                  });
+                                } else {
+                                  FocusScope.of(context).requestFocus(
+                                      focusNode);
+                                }
+                              }
+                                  : null,
                             ),
                           ),
-                          onPressed: _formChanged
-                              ? () async{
-                            if (_formKey.currentState.validate()) {
-                              _formKey.currentState.save();
-                             // final uid = await Provider.of(context).auth
-                              //_profile.store = _store;
-                             // navigateToSignupPage2(context);
-                              //Navigator.of(context).pushReplacementNamed('/signupage2');
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context)=> SignupPage2(),
-                                  settings: RouteSettings(
-                                      arguments: ''
-                                  ),
-                                ),
-                              );
-                              if(_image != null) {
-                                uploadPic(context);
-                                final ref = FirebaseStorage.instance.ref().child(_downloadURL);
-                                _profile.image = await ref.getDownloadURL();
-                              }else{
-                                _profile.image = '';
-                              }
-                              final uid = await auth.getCurrentUID();
-                              print('UIDDDD:${_profile.fullName}');
-                              Map<String,dynamic> profileDate={'image':this._profile.image,'fullname':this._profile.fullName,'contact':this._profile.contact,'storename':this._store.storeName,'storeLocation':this._store.storeLocation,'category':this._store.category,'workingHours':_store.workingHours};
-                              await _createPro.addData(profileDate,uid).then((result){}).catchError((e){print(e);});
-
-                            } else {
-                              FocusScope.of(context).requestFocus(focusNode);
-                            }
-                          }
-                              : null,
                         ),
-                    ),
                       ),
                     ),
             ]
