@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import './EditPage.dart';
 import './LowInvo.dart';
 
-void main() => runApp(Inventory());
-
 class Inventory extends StatefulWidget{
   @override
   _InventoryState createState() => _InventoryState();
