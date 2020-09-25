@@ -13,7 +13,6 @@ import 'package:berbera_2/pages/order_page.dart';
 import 'package:berbera_2/pages/edit_account_page.dart';
 import 'package:berbera_2/widget/provider.dart';
 import 'package:berbera_2/pages/offer_page.dart';
-import 'package:berbera_2/pages/validation.dart';
 
 void main() => runApp(MyApp());
 

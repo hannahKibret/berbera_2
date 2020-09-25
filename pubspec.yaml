@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  adobe_xd: ^1.0.0+1
   firebase_auth:
   cloud_firestore: ^0.13.0+1
   firebase_storage:
@@ -65,6 +66,7 @@ flutter:
     - images/img3.jpg
     - images/img4.jpg
     - images/img5.jpg
+    - images/logo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

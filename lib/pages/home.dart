@@ -7,7 +7,7 @@ class Home extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     Widget image_carousel = new Container(
-      height: 700,
+      height: 200,
       child: Carousel(
         boxFit: BoxFit.fill,
         images: [
