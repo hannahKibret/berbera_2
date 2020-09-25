@@ -39,6 +39,7 @@ dependencies:
   gradient_app_bar:
   material_design_icons_flutter: ^4.0.5045
   carousel_pro:
+  page_transition: ^1.1.6
 
 
 dev_dependencies:
