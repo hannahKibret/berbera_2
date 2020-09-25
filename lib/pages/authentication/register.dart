@@ -1,13 +1,16 @@
+import 'dart:math';
+
+import 'package:berbera_2/pages/authentication/login.dart';
 import 'package:berbera_2/services/auth.dart';
+import 'package:berbera_2/services/verification_service.dart';
+import 'package:berbera_2/widget/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:berbera_2/widget/provider.dart';
-import 'package:berbera_2/services/verification_service.dart';
-import 'dart:math';
-import 'package:berbera_2/pages/authentication/login.dart';
+import 'package:page_transition/page_transition.dart';
+
 import '../sign_up_page.dart';
-import '../supplierMain.dart';
-class  Register extends StatefulWidget {
+
+class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -23,7 +26,12 @@ class _RegisterState extends State<Register> {
   VerificationService _vService = VerificationService();
 
   void _next_page() {
-    Navigator.of(context).pushReplacementNamed('/login');
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.leftToRightWithFade,
+            duration: Duration(milliseconds: 500),
+            child: LoginPage()));
   }
 
   @override
@@ -53,8 +61,8 @@ class _RegisterState extends State<Register> {
       ),
 */
         body: Builder(
-        builder: (context) =>
-            Container(
+          builder: (context) =>
+              Container(
                 padding: const EdgeInsets.symmetric(vertical:20.0,horizontal: 50.0),
                 child: Form(
                   key: _formKey,
@@ -226,8 +234,7 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
               ),
-
-      ),
+        ),
       ),
     );
   }

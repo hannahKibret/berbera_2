@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import './EditPage.dart';
 import './LowInvo.dart';
 
@@ -10,7 +11,14 @@ class Inventory extends StatefulWidget{
 }
 
 class _InventoryState extends State<Inventory> {
-  final List<String> entries = <String>['Status', 'Low Inventory', 'Edit Inventory', 'Sales'];
+  final List<String> entries = <String>[
+    'Status',
+    'Low Inventory',
+    'Edit Inventory',
+    'Add To Inventory'
+  ];
+
+  String _tab_detail = '';
 
   @override
   Widget build(BuildContext context) {
@@ -21,20 +29,47 @@ class _InventoryState extends State<Inventory> {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           child: Container(
-            height: 60,
-            color: Colors.grey[300],
-            child: Text('${entries[index]}', style: TextStyle(fontSize: 18.0),), padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: const Color(0xffffffff),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x29000000),
+                  offset: Offset(0, 2),
+                  blurRadius: 15,
+                ),
+              ],
+            ),
+            margin: EdgeInsets.all(15),
+            height: 100,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '${entries[index]}',
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(_tab_detail,
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.normal,
+                      )),
+                )
+              ],
+            ),
           ),
-          onTap: (){
-            if(index == 2){
+          onTap: () {
+            if (index == 2) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (
-                      context)=> EditPage(),
-                  settings: RouteSettings(
-                      arguments: entries[index]
-                  ),
+                  builder: (context) => EditPage(),
+                  settings: RouteSettings(arguments: entries[index]),
                 ),
               );
             }
@@ -64,9 +99,9 @@ class _InventoryState extends State<Inventory> {
                 }*/
           },
         );
-
       },
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      separatorBuilder: (BuildContext context, int index) =>
+      const Divider(indent: 5,),
     );
 
 

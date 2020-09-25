@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.push(
         context,
         PageTransition(
-            type: PageTransitionType.downToUp,
+            type: PageTransitionType.leftToRightWithFade,
             duration: Duration(milliseconds: 500),
             child: Register()));
   }
