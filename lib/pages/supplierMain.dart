@@ -1,19 +1,16 @@
 import 'package:berbera_2/pages/term_page.dart';
 import 'package:berbera_2/services/supplier_service.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-//import 'package:carousel_pro/carousel_pro.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
 import './home.dart';
 import './inventory.dart';
 import './new_page.dart';
-import './order_page.dart';
 import './offer_page.dart';
+import './order_page.dart';
 import './payment.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
 import 'edit_account_page.dart';
-void main() => runApp(SupplierMain());
+
 class SupplierMain extends StatefulWidget {
   // This widget is the root of your application.
   @override

@@ -53,8 +53,8 @@ class HomeState extends State<Home> {
 
           ],
           staggeredTiles: [
-            StaggeredTile.extent(4, 250.0),
-            StaggeredTile.extent(4, 250.0),
+            StaggeredTile.extent(4, 350.0),
+            StaggeredTile.extent(4, 400.0),
             StaggeredTile.extent(2, 120.0),
             StaggeredTile.extent(2, 120.0),
             StaggeredTile.extent(4, 250.0),
@@ -70,68 +70,71 @@ class HomeState extends State<Home> {
       elevation: 14.0,
       borderRadius: BorderRadius.circular(24),
       shadowColor: Color(0x802196F3),
-      child: Row(
+      child: Column(
         children: [
-          const SizedBox(
-            height: 18,
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Text("data",
+                style: TextStyle(
+                    fontSize: 30.0,
+                    color: Colors.blueAccent,
+                    fontWeight: FontWeight.bold)),
           ),
-          Expanded(
-            child: PieChart(
-              PieChartData(
-                  pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                    setState(() {
-                      if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                          pieTouchResponse.touchInput is FlPanEnd) {
-                        touchedIndex = -1;
-                      } else {
-                        touchedIndex = pieTouchResponse.touchedSectionIndex;
-                      }
-                    });
-                  }),
-                  borderData: FlBorderData(
-                    show: false,
-                  ),
-                  sectionsSpace: 0,
-                  centerSpaceRadius: 40,
-                  sections: showingSections()),
-            ),
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Indicator('test', Color(0xfff8b250)),
-              SizedBox(
-                height: 4,
-              ),
-              Indicator(
-                  'Second',
-                  const Color(0xff0293ee)
-              ),
-              SizedBox(
-                height: 4,
-              ),
-              Indicator(
-
-                  'Third',
-                  Color(0xff845bef)
-              ),
-              SizedBox(
-                height: 4,
-              ),
-              Indicator('Forth',
-                  Colors.orange
-              ),
-              SizedBox(
+          Row(
+            children: [
+              const SizedBox(
                 height: 18,
+              ),
+              Expanded(
+                child: PieChart(
+                  PieChartData(
+                      pieTouchData:
+                          PieTouchData(touchCallback: (pieTouchResponse) {
+                        setState(() {
+                          if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                              pieTouchResponse.touchInput is FlPanEnd) {
+                            touchedIndex = -1;
+                          } else {
+                            touchedIndex = pieTouchResponse.touchedSectionIndex;
+                          }
+                        });
+                      }),
+                      borderData: FlBorderData(
+                        show: false,
+                      ),
+                      sectionsSpace: 0,
+                      centerSpaceRadius: 40,
+                      sections: showingSections()),
+                ),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Indicator('test', Color(0xfff8b250)),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Indicator('Second', const Color(0xff0293ee)),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Indicator('Third', Color(0xff845bef)),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Indicator('Forth', Colors.orange),
+                  SizedBox(
+                    height: 18,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 28,
               ),
             ],
           ),
-          const SizedBox(
-            width: 28,
-          ),
-
         ],
       ),
     );
@@ -146,86 +149,88 @@ class HomeState extends State<Home> {
       shadowColor: Color(0x802196F3),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: LineChart(
-          LineChartData(
-            lineTouchData: LineTouchData(enabled: true,),
-            lineBarsData: [
-              LineChartBarData(
-                spots: [
-                  FlSpot(0, 4),
-                  FlSpot(1, 3.5),
-                  FlSpot(2, 4.5),
-                  FlSpot(3, 1),
-                  FlSpot(4, 4),
-                  FlSpot(5, 6),
+        child: SizedBox(
+          height: 250,
+          child: LineChart(
+            LineChartData(
+              lineTouchData: LineTouchData(enabled: true,),
+              lineBarsData: [
+                LineChartBarData(
+                  spots: [
+                    FlSpot(0, 4),
+                    FlSpot(1, 3.5),
+                    FlSpot(2, 4.5),
+                    FlSpot(3, 1),
+                    FlSpot(4, 4),
+                    FlSpot(5, 6),
+                  ],
+                  isCurved: true,
+                  barWidth: 8,
+                  colors: [
+                    Colors.orange,
+                  ],
+                  belowBarData: BarAreaData(
+                    show: true,
+                    colors: [Colors.deepOrange, Colors.orange, Colors.white],
 
-                ],
-                isCurved: false,
-                barWidth: 8,
-                colors: [
-                  Colors.orange,
-                ],
-                belowBarData: BarAreaData(
-                  show: false,
-                  colors: [Colors.orange, Colors.deepOrange],
-
+                  ),
+                  /*   aboveBarData: BarAreaData(
+                          show: true,
+                          colors: [Colors.orange.withOpacity(0.6)],
+                          cutOffY: cutOffYValue,
+                          applyCutOffY: true,
+                        ), */
+                  dotData: FlDotData(
+                    show: false,
+                  ),
                 ),
-                /*   aboveBarData: BarAreaData(
-                        show: true,
-                        colors: [Colors.orange.withOpacity(0.6)],
-                        cutOffY: cutOffYValue,
-                        applyCutOffY: true,
-                      ), */
-                dotData: FlDotData(
-                  show: false,
-                ),
-              ),
-            ],
-            minY: 0,
-            titlesData: FlTitlesData(
-              bottomTitles: SideTitles(
+              ],
+              minY: 0,
+              titlesData: FlTitlesData(
+                bottomTitles: SideTitles(
+                    showTitles: true,
+                    reservedSize: 10,
+                    textStyle: dateTextStyle,
+                    getTitles: (value) {
+                      switch (value.toInt()) {
+                        case 0:
+                          return 'Jan';
+                        case 1:
+                          return 'Feb';
+                        case 2:
+                          return 'Mar';
+                        case 3:
+                          return 'Apr';
+                        case 4:
+                          return 'May';
+                        case 5:
+                          return 'Jun';
+                        default:
+                          return '';
+                      }
+                    }),
+                leftTitles: SideTitles(
                   showTitles: true,
-                  reservedSize: 10,
                   textStyle: dateTextStyle,
                   getTitles: (value) {
-                    switch (value.toInt()) {
-                      case 0:
-                        return 'Jan';
-                      case 1:
-                        return 'Feb';
-                      case 2:
-                        return 'Mar';
-                      case 3:
-                        return 'Apr';
-                      case 4:
-                        return 'May';
-                      case 5:
-                        return 'Jun';
-                      default:
-                        return '';
-                    }
-                  }),
-              leftTitles: SideTitles(
-                showTitles: true,
-                textStyle: dateTextStyle,
-                getTitles: (value) {
-                  return '${value + 1}';
-                },
+                    return '${value + 1}';
+                  },
+                ),
               ),
+              axisTitleData: FlAxisTitleData(
+                  leftTitle: AxisTitle(
+                      showTitle: true, titleText: 'Value', margin: 4),
+                  bottomTitle: AxisTitle(
+                      showTitle: true,
+                      margin: 4,
+                      titleText: '2019',
+                      textStyle: dateTextStyle,
+                      textAlign: TextAlign.center)),
+              gridData: FlGridData(
+                show: false,
+              ),
+              borderData: FlBorderData(show: false),
             ),
-            axisTitleData: FlAxisTitleData(
-                leftTitle: AxisTitle(
-                    showTitle: true, titleText: 'Value', margin: 4),
-                bottomTitle: AxisTitle(
-                    showTitle: true,
-                    margin: 4,
-                    titleText: '2019',
-                    textStyle: dateTextStyle,
-                    textAlign: TextAlign.center)),
-            gridData: FlGridData(
-              show: false,
-            ),
-            borderData: FlBorderData(show: false),
           ),
         ),
       ),

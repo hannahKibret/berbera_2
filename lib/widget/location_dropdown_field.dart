@@ -1,5 +1,4 @@
 import 'package:berbera_2/models/profile.dart';
-import 'package:berbera_2/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 //class LocationDropDownField extends StatefulWidget{
 //  @override
@@ -25,9 +24,11 @@ class LocationDropDownField extends StatelessWidget{
      return DropdownButtonFormField(
         isExpanded: true,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: "Store Location",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.00),
         ),
+        //  labelText: "Store Location",
+      ),
         value: selectedLocation,
         onChanged: (String newSelection) => onChanged(newSelection),
         items:StoreLocations.map((String value){

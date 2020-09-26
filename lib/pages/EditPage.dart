@@ -2,7 +2,6 @@ import 'package:berbera_2/pages/AddInvo.dart';
 import 'package:berbera_2/pages/EditInvo.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(EditPage());
 
 class EditPage extends StatefulWidget{
   @override

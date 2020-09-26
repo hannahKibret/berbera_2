@@ -25,8 +25,10 @@ class BankDropDownField extends StatelessWidget {
     return DropdownButtonFormField(
       isExpanded: true,
       decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: "Bank Name",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.00),
+        ),
+        hintText: "Bank Name",
       ),
       value: selectedBank,
       onChanged: (String newSelection) => onChanged(newSelection),

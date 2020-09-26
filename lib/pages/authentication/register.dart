@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:berbera_2/pages/authentication/login.dart';
 import 'package:berbera_2/services/auth.dart';
 import 'package:berbera_2/services/verification_service.dart';
@@ -157,17 +155,31 @@ class _RegisterState extends State<Register> {
                             child: Container(
                               height: 50,
                               child: RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(80.0),
-                                ),
-                                color: Color(0xffe9902e),
-                                child: Text("Sign Up",
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onPressed: _formChanged
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(80.0),
+                          ),
+                          color: Color(0xffe9902e),
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+//                                  Navigator.of(context).pushReplacementNamed(
+//                                      '/signupage1');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignupPage(),
+                                settings: RouteSettings(arguments: ''),
+                              ),
+                            );
+                          }
+
+                          /*_formChanged
                                     ? () async {
                                   if (_formKey.currentState.validate()) {
                                     dynamic result = await auth
@@ -205,7 +217,7 @@ class _RegisterState extends State<Register> {
                                         focusNode);
                                   }
                                 }
-                                    : null,
+                                    : null,*/
                               ),
                             ),
                           ),

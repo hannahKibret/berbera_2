@@ -1,11 +1,7 @@
 import 'package:berbera_2/pages/FemaleClothing.dart';
 import 'package:berbera_2/pages/MaleClothing.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
-void main() => runApp(AddInvo());
 
 class AddInvo extends StatefulWidget{
   @override

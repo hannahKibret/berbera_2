@@ -25,9 +25,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Berbera',
         theme: ThemeData(
-          appBarTheme:
-              new AppBarTheme(color: Color(0xfff8b250), centerTitle: true),
-          primarySwatch: Colors.deepOrange,
+          appBarTheme: AppBarTheme(color: Color(0xfff8b250), centerTitle: true),
+          primarySwatch: Colors.orange,
         ),
         home: HomeController(),
         routes: <String, WidgetBuilder>{

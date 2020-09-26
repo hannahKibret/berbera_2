@@ -1,12 +1,9 @@
 import 'package:berbera_2/models/profile.dart';
 import 'package:berbera_2/pages/sign_up_page3.dart';
 import 'package:berbera_2/services/auth.dart';
+import 'package:berbera_2/services/bankInfo_service.dart';
 import 'package:berbera_2/widget/bank_dropdown_field.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:berbera_2/services/bankInfo_service.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:steps/steps.dart';
 class SignupPage2 extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _SignupPage2State();
@@ -40,13 +37,10 @@ class _SignupPage2State extends State<SignupPage2> {
     // TODO: implement build
     return MaterialApp(
         theme: ThemeData(
-        primaryColor: Colors.deepOrange,
-    ),
-      home:Scaffold(
-      appBar: AppBar(
-        title: Text('Berbera',style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.deepOrange,
+          primaryColor: Colors.orangeAccent,
       ),
+      home:Scaffold(
+
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Form(
@@ -55,43 +49,12 @@ class _SignupPage2State extends State<SignupPage2> {
           child: ListView(
             shrinkWrap: true,
             children: <Widget>[
-              Container(
-                height:60.0,
-                alignment: Alignment.topCenter,
-                child:Center(
 
-                  child:Steps(
-                    direction: Axis.horizontal,
-                    size: 11.0,
-                    path: {'color': Colors.black, 'width': 2.0},
-                    steps: [
-                      {
-                        'color': Colors.white,
-                        'background': Colors.black,
-                        'label': '1',
-
-                      },
-                      {
-                        'color': Colors.white,
-                        'background': Colors.deepOrange,
-                        'label': '2',
-
-                      },
-                      {
-                        'color': Colors.white,
-                        'background': Colors.black,
-                        'label': '3',
-
-                      }
-                    ],
-                  ),
-                ),
-              ),
               Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child:Text(
+                  padding: const EdgeInsets.only(top: 15, bottom: 15, left: 10),
+                  child: Text(
                       'Payment Information',
-                      style:TextStyle(
+                      style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
 
@@ -104,9 +67,10 @@ class _SignupPage2State extends State<SignupPage2> {
                   keyboardType: TextInputType.text,
                   onSaved: (String val) => this._bank.customer = val,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.00),),
                     // helperText: "Required",
-                    labelText: "Full name",
+                    hintText: "Full name",
                   ),
                   autofocus: true,
                   autovalidate: _formChanged,
@@ -122,9 +86,10 @@ class _SignupPage2State extends State<SignupPage2> {
                   keyboardType: TextInputType.number,
                   onSaved: (String val) => this._bank.bankAccount = val,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.00),),
                     // helperText: "Required",
-                    labelText: "Account No",
+                    hintText: "Account No",
                   ),
                   autofocus: true,
                   //autovalidate: _formChanged,
@@ -158,13 +123,24 @@ class _SignupPage2State extends State<SignupPage2> {
                     child: Padding(
                       padding: const EdgeInsets.only(right:5.0),
                       child: RaisedButton(
-                        color: Colors.deepOrange,
-                        child: Text("Next",
-                          style:TextStyle(
-                            color:Colors.white,
+                          color: Colors.orangeAccent,
+                          child: Text("Next",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        onPressed: _formChanged
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignupPage3(),
+                                settings: RouteSettings(
+                                    arguments: ''
+                                ),
+                              ),
+                            );
+                          }
+                        /*_formChanged
                             ? () async{
                           if (_formKey.currentState.validate()) {
                             _formKey.currentState.save();
@@ -187,7 +163,7 @@ class _SignupPage2State extends State<SignupPage2> {
                             FocusScope.of(context).requestFocus(focusNode);
                           }
                         }
-                            : null,
+                            : null, */
                       ),
                     ),
                   ),

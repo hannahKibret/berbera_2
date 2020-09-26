@@ -138,17 +138,28 @@ class _LoginPageState extends State<LoginPage> {
                                   margin: EdgeInsets.only(top: 10),
                                   height: 50,
                                   child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(80.0),
-                                    ),
-                                    color: Color(0xffe9902e),
-                                    child: Text("Sign in",
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    onPressed: _formChanged
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(80.0),
+                              ),
+                              color: Color(0xffe9902e),
+                              child: Text(
+                                "Sign in",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SupplierMain(),
+                                    settings: RouteSettings(arguments: ''),
+                                  ),
+                                );
+                              }
+
+                              /*_formChanged
                                         ? () async {
                                       if (_formKey.currentState.validate()) {
                                         dynamic result = await auth
@@ -176,7 +187,7 @@ class _LoginPageState extends State<LoginPage> {
                                             focusNode);
                                       }
                                     }
-                                        : null,
+                                        : null, */
                                   ),
                                 )
                             ),

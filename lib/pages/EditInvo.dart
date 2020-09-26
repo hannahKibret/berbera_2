@@ -1,13 +1,11 @@
 import 'dart:io';
 
+import 'package:berbera_2/services/product_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:berbera_2/services/product_service.dart';
 
-void main() => runApp(EditInvo());
 
 class EditInvo extends StatefulWidget{
   @override

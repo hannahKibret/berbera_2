@@ -37,6 +37,14 @@ enum StoreLocation{
 //enum BankName{
 //  CBE,Awash
 //}
-List<String> StoreLocations = ["Bole","Megenagna",'Piassa','4 Kilo','22','CMC','Ayat'];
-List<String> Categories = ["Male","Female","Kids","All"];
-List<String> BankName = ["CBE","Awash",'Enat','Nib'];
+List<String> StoreLocations = [
+  "Bole",
+  "Megenagna",
+  'Piassa',
+  '4 Kilo',
+  '22',
+  'CMC',
+  'Ayat'
+];
+List<String> Categories = ["Fashion", "Electronics", "Kids and Toys", "All"];
+List<String> BankName = ["CBE", "Awash", 'Enat', 'Nib'];

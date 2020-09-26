@@ -6,8 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-void main() => runApp(MaleClothing());
-
 class MaleClothing extends StatefulWidget {
   @override
   _MaleClothingState createState() => _MaleClothingState();

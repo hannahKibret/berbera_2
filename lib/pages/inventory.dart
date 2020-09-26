@@ -25,41 +25,41 @@ class _InventoryState extends State<Inventory> {
       padding: const EdgeInsets.fromLTRB(5.0, 20.0, 10.0, 0),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: const Color(0xffffffff),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(0, 2),
-                  blurRadius: 15,
+        return _tab(index);
+      },
+      separatorBuilder: (BuildContext context, int index) => const Divider(
+        indent: 5,
+      ),
+    );
+  }
+
+  Material _tab(
+    int index,
+  ) {
+    return Material(
+        color: Colors.white,
+        elevation: 14.0,
+        borderRadius: BorderRadius.circular(24),
+        shadowColor: Color(0x802196F3),
+        child: GestureDetector(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '${entries[index]}',
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
-            margin: EdgeInsets.all(15),
-            height: 100,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    '${entries[index]}',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(_tab_detail,
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.normal,
-                      )),
-                )
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(_tab_detail,
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.normal,
+                    )),
+              )
+            ],
           ),
           onTap: () {
             if (index == 2) {
@@ -71,15 +71,12 @@ class _InventoryState extends State<Inventory> {
                 ),
               );
             }
-            if(index == 1){
+            if (index == 1) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (
-                      context)=> LowInvo(),
-                  settings: RouteSettings(
-                      arguments: entries[index]
-                  ),
+                  builder: (context) => LowInvo(),
+                  settings: RouteSettings(arguments: entries[index]),
                 ),
               );
             }
@@ -96,12 +93,7 @@ class _InventoryState extends State<Inventory> {
                    ),
                 }*/
           },
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) =>
-      const Divider(indent: 5,),
-    );
-
-
+        ));
   }
+
 }

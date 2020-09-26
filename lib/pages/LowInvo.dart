@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
-
-void main() => runApp(LowInvo());
 
 class LowInvo extends StatefulWidget{
   @override

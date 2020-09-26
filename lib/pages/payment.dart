@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-void main() => runApp(Payment());
-
 class Payment extends StatelessWidget{
   String titlee = 'Payment';
   @override
